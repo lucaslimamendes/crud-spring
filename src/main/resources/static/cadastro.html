@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Produtos</title>
+    <style type="text/css">
+        a {
+            margin-right: 15px;
+            margin-left: 15px;
+        };
+
+        header {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cadastro de Produto</h1>
+    <header>
+        <h2>
+            <a href="index.html">
+                Home
+            </a>
+            <a href="cadastro.html">
+                Cadastro de Produtos
+            </a>
+            <a href="listagem.html">
+                Listagem de Produtos
+            </a>
+        </h2>
+    </header>
+    <div style="display: flex;">
+        <form id="formulario">
+            <label>Descrição do produto: </label>
+            <input style="margin-left: 5px; margin-right: 15px" type="text" id="descricao" name="descricao"
+                placeholder="Nome do Produto" />
+            <label>Preço do Produto: </label>
+            <input style="margin-left: 5px; margin-right: 15px" type="text" id="preco" name="preco"
+                placeholder="Preço do Produto" />
+            <input type="button" onclick="submitProduto()" value="Enviar" />
+        </form>
+    </div>
+    <label id="id" hidden></label>
+</body>
+</html>
+<script src="/scripts/cadastro.js"></script>
