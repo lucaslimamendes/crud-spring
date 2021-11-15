@@ -36,7 +36,7 @@ public class Produtos {
     }
     
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        this.descricao = descricao != null ? descricao : this.descricao;
     }
     
     public String getPreco() {
@@ -44,6 +44,6 @@ public class Produtos {
     }
     
     public void setPreco(String preco) {
-        this.preco = preco;
+        this.preco = preco != null ? preco : this.preco;
     }
 }
