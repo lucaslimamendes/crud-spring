@@ -1,6 +1,5 @@
 package com.spring.crud.crudspring.controller;
 
-import java.security.SecureRandom;
 import java.util.List;
 
 import com.spring.crud.crudspring.model.Usuarios;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -27,6 +27,11 @@ public class UsuariosController {
 
     UsuariosController(UsuariosRepository usuariosRepository) {
         this.repository = usuariosRepository;
+    }
+    
+    @Bean
+    PasswordEncoder getPasswordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @GetMapping
@@ -43,7 +48,7 @@ public class UsuariosController {
     @PostMapping
     public Usuarios create(@RequestBody Usuarios usuarios) {
     	String pass = usuarios.getPassword();
-    	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    	PasswordEncoder passwordEncoder = getPasswordEncoder();
     	String hashedPassword = passwordEncoder.encode(pass);
     	usuarios.setPassword(hashedPassword);
         return repository.save(usuarios);
