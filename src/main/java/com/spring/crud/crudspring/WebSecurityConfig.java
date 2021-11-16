@@ -18,13 +18,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.cors().and().csrf().disable().authorizeRequests()
-			.antMatchers("/home", "/login").permitAll()
-			.antMatchers(HttpMethod.POST, "/login").permitAll()
-			.antMatchers(HttpMethod.GET,"/produtos", "/produtos/*").permitAll()
-			.antMatchers(HttpMethod.GET, "/usuarios" , "/usuarios/*").permitAll()
-			.antMatchers(HttpMethod.POST, "/usuarios").permitAll()
-			.antMatchers(HttpMethod.PUT, "/usuarios/*").permitAll()
-			.antMatchers(HttpMethod.DELETE, "/usuarios/*").permitAll()
+			.antMatchers("/", "/home", "/login").permitAll()
+			.antMatchers(HttpMethod.GET,"/produtos", "/produtos/*", "/usuarios", "/usuarios/*").permitAll()
+			.antMatchers(HttpMethod.POST, "/login", "/usuarios", "/produtos").permitAll()
+			.antMatchers(HttpMethod.PUT, "/usuarios/*", "/produtos/*").permitAll()
+			.antMatchers(HttpMethod.DELETE, "/usuarios/*", "/produtos/*").permitAll()
 			.anyRequest().authenticated();
 	}
 	
